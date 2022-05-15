@@ -20,13 +20,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.lunchtray.R
 import com.example.lunchtray.databinding.FragmentStartOrderBinding
 
 /**
  * [StartOrderFragment] allows people to click the start button to start an order.
  */
 class StartOrderFragment : Fragment() {
-
     // Binding object instance corresponding to the fragment_start_order.xml layout
     // This property is non-null between the onCreateView() and onDestroyView() lifecycle callbacks,
     // when the view hierarchy is attached to the fragment.
@@ -40,12 +41,12 @@ class StartOrderFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentStartOrderBinding.inflate(inflater, container, false)
         val root: View = binding.root
         // Navigate to entree menu
         binding.startOrderBtn.setOnClickListener {
-            // TODO: navigate to the EntreeMenuFragment
+            findNavController().navigate(R.id.action_startOrderFragment_to_entreeMenuFragment)
         }
         return root
     }
